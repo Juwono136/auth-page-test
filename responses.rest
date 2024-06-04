@@ -1,0 +1,7 @@
+POST http://bagusmanuaba.local:8000/users/register
+Content-Type: application/json
+
+{
+    "username": "juwono@gmail.com",
+    "password": "123456"
+}
