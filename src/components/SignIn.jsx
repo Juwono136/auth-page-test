@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
-import axios from "axios";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useState("");
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -17,21 +15,24 @@ const SignIn = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setLoading(true);
     setError(null);
+    setLoading(false);
+
+    const formData = new FormData();
+    formData.append("email", email);
+    formData.append("password", password);
 
     try {
       const response = await axios.post(
-        "http://bagusmanuaba.local:8000/users/token",
-        { email, password },
+        "http://10.25.130.107:8000/users/token",
+        formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${token}`,
           },
         }
       );
-      console.log("Login successful:", response.data);
+      console.log("response successfuly:", response.data);
     } catch (error) {
       setError(error.response ? error.response.data.message : "Network Error");
     } finally {
