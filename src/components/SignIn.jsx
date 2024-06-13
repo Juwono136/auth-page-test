@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
+import axios from "axios";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -19,7 +20,7 @@ const SignIn = () => {
     setLoading(false);
 
     const formData = new FormData();
-    formData.append("email", email);
+    formData.append("username", email);
     formData.append("password", password);
 
     try {

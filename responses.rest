@@ -1,5 +1,5 @@
-POST http://10.25.130.107:8000/users/register
-Content-Type: application/json
+POST http://10.25.130.107:8000/users/token
+Content-Type: multipart/form-data
 
 {
     "username": "juwono@gmail.com",
